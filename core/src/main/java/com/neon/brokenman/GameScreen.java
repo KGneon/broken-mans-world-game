@@ -14,7 +14,7 @@ public class GameScreen implements Screen {
     private final Texture image;
     private final BitmapFont font;
 
-    public GameScreen(BitmapFont font) {
+    public GameScreen() {
         batch = new SpriteBatch();
         image = new Texture("libgdx.png");
         font = new BitmapFont();
