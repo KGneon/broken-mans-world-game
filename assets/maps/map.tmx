@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" source="tileSet_vpg.tsx"/>
+ <layer id="1" name="water" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJx1Vbtu1UAQnb2JvwD4AAq+AImGD+AfMBFbQQRfEIkOELFc8ihSbV6ACyoQonRCkhvpFimAKqLgKVEDPefszthzQ1Ic7Xq9njNnXl4XkQ1gE9gCtoHnwK0gcht4tyjpJp6bIP3nhfG5riRh33O/Uolw5TucC++5s7wHEs9r2OF+B+92gffAHrAPHACHIv1ykGjfcuV3nifb8Xu16fhSrf7anRX16wuevwLfgO/AD+AncA1aH4V8LxrXpYmkaZBE7bCXjifSt7hjq+f3+9PWgPsT4NdE5OGixCrkGCfGuAlDHDM3ecmn3NKWOwNcDKJqF6/V7y/i/n3FA+XcHrX2q6Hkhfepi3vjaRU8tzONZfYr+wkbteW2GvO/jvcbwCawBewB+8AL4CWwWrSVWgpDjWWb3J/U7GH++tpgLLjfwftdx3fgvuN+qvyqKZGvKec55sbLmDbjPvm4W7ypXfnTXbxfVvt6p7fvDB3sd2H+zKN2e/pXh7HuvWbyWczvaK9MS72IxdH8pb7jEbQb4UNvOqfFp0Gz1YDlRHtpiK/1nt6PjbtnumdhqCciTc+o5SMXC8bS9dAQa3tncbY+IU/j6oaYqR5fJ76W/bucb/ZPleORbRt3Xc3bqMM4e6baL1zVh/+0dG61OmHcT8uz5Ymc2k92J5r/Oj/lpF6vx/eot+ufvQ+d0+T7x/xlPlXjnI1nCxJ1JuSaMo622Oz93Kirkc/nwmJMrdRZlxrjLMtxfOVqZQl5IVpnd+kMn/xsthhzz7iS3/TXzifNabZBNKdw3oOOWVnTWXPJz8lWddB+p7nU3orsiaxb403Ot4BxAqJIN4DruAvk9Wo16rS5ZVrWkLM161U9w78w8h5zafMkz2usT8H5CfxA/Fv4PchNHyJX8IqPf6u9Br7oeX1+VzS3rqcj/XkCrjfAR+APcB5nV/DPvrCY+XqNQU/eLszDepHrWjXwpKPyb85xzTrHmdXbvH4MrtfAB+A3cA68lwv3nFbys45tltI2uTrVUhfd+bkuOc+1fFz+2YNe+0/+A2YxxQQ=
+  </data>
+ </layer>
+ <layer id="2" name="islands" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
+  </data>
+ </layer>
+</map>
