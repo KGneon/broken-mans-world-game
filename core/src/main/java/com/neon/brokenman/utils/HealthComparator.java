@@ -1,4 +1,4 @@
-package com.neon.brokenman;
+package com.neon.brokenman.utils;
 
 import java.time.LocalDate;
 

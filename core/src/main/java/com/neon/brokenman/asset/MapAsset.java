@@ -18,6 +18,6 @@ public enum MapAsset implements Asset<TiledMap> {
 
     @Override
     public AssetDescriptor getDescriptor() {
-        return null;
+        return descriptor;
     }
 }

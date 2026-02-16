@@ -12,4 +12,7 @@ dependencies {
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }
+
+  compileOnly "org.projectlombok:lombok:1.18.30"
+  annotationProcessor "org.projectlombok:lombok:1.18.30"
 }
