@@ -1,9 +1,12 @@
 package com.neon.brokenman;
 
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -30,17 +33,22 @@ public class GdxGame extends Game {
     @Getter private OrthographicCamera camera;
     @Getter private Viewport viewport;
     @Getter private AssetService assetService;
-    GLProfiler glProfiler;
+    private GLProfiler glProfiler;
+    private FPSLogger fpsLogger;
 
     private final Map<Class<? extends Screen>, Screen> screenCashe = new HashMap<>();
 
     @Override
     public void create() {
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+
         this.batch = new SpriteBatch();
         this.camera = new OrthographicCamera();
         this.viewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
         this.assetService = new AssetService(new InternalFileHandleResolver());
         this.glProfiler = new GLProfiler(Gdx.graphics);
+        this.glProfiler.enable();
+        this.fpsLogger = new FPSLogger();
 
         addScreen(new GameScreen(this));
         setScreen(GameScreen.class);
@@ -75,6 +83,7 @@ public class GdxGame extends Game {
         super.render();
 
         Gdx.graphics.setTitle("Broken Mans World - FPS: " + Gdx.graphics.getFramesPerSecond() + " - GL Calls: " + glProfiler.getDrawCalls());
+        fpsLogger.log();
     }
 
     @Override

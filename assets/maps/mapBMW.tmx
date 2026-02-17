@@ -4,7 +4,7 @@
  <tileset firstgid="193" source="objects.tsx"/>
  <layer id="2" name="ground" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJzbxsDAsG0Uj2ISsP0gcMMoHo0/bJgPigfaHbSIk+Ecb6OYcjyaPgYfBgBDBab9
+   eJzbxsDAsG0Uj2ISsP0gcMNwwZ5A7AXE3nSOv1AgDgPicDr7l9b28kExve2l1L+48pQXmbiKQv+GUYjJtTeJSJwHtScXTTx5kMTnQNhLi3J5MPt3KNgLAImHiUY=
   </data>
  </layer>
  <layer id="1" name="background" width="30" height="20">
@@ -14,14 +14,14 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="2" gid="196" x="323.24" y="146.711" width="41" height="63"/>
-  <object id="3" gid="196" x="228.614" y="212.77" width="41" height="63"/>
+  <object id="3" gid="196" x="321.947" y="228.77" width="41" height="63"/>
   <object id="4" gid="195" x="215.756" y="130.093" width="80" height="112"/>
   <object id="5" gid="194" x="218.297" y="133.869" width="16" height="16">
    <properties>
     <property name="storage_size" value=""/>
    </properties>
   </object>
-  <object id="6" gid="197" x="120.135" y="228.014" width="32" height="32"/>
+  <object id="6" gid="197" x="-5.865" y="230.014" width="32" height="32"/>
   <object id="7" gid="196" x="54.9861" y="196.255" width="41" height="63"/>
  </objectgroup>
  <layer id="3" name="frontground" width="30" height="20">
