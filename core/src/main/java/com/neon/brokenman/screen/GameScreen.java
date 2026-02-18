@@ -48,7 +48,6 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        this.assetService.load(MapAsset.MAIN);
         this.engine.getSystem(RenderSystem.class).setMap(this.assetService.get(MapAsset.MAIN));
     }
 
