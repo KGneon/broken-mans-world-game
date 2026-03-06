@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.neon.brokenman.asset.AssetService;
 import com.neon.brokenman.asset.MapAsset;
+import lombok.Setter;
 
 import java.util.function.Consumer;
 
@@ -18,8 +19,8 @@ public class TiledService {
     private TiledMap currentMap;
 
     //TODO observer pattern to check!!!
-    private Consumer<TiledMap> mapChangeConsumer;
-    private Consumer<TiledMapTileMapObject> loadObjectConsumer;
+    @Setter private Consumer<TiledMap> mapChangeConsumer;
+    @Setter private Consumer<TiledMapTileMapObject> loadObjectConsumer;
 
     public TiledService(AssetService assetService) {
         this.assetService = assetService;

@@ -11,7 +11,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.neon.brokenman.asset.AssetService;
 import com.neon.brokenman.component.Graphic;
 import com.neon.brokenman.component.Transform;
 
@@ -25,14 +24,14 @@ public class RenderSystem extends SortedIteratingSystem implements Disposable {
     private final Viewport viewport;
     private final OrthographicCamera camera;
 
-    public RenderSystem(Batch batch, Viewport viewport) {
+    public RenderSystem(Batch batch, Viewport viewport, OrthographicCamera camera) {
         super(
                 Family.all(Transform.class, Graphic.class).get(),
                 Comparator.comparing(Transform.MAPPER::get)
         );
         this.batch = batch;
         this.viewport = viewport;
-        this.camera = (OrthographicCamera) viewport.getCamera();
+        this.camera = camera;
         this.mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, this.batch);
     }
 
@@ -45,7 +44,10 @@ public class RenderSystem extends SortedIteratingSystem implements Disposable {
 
 
         forceSort();
+        batch.begin();
+        batch.setProjectionMatrix(camera.combined);
         super.update(deltaTime);
+        batch.end();
     }
 
     @Override

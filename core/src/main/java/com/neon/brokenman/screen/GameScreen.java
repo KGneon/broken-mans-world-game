@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,37 +19,48 @@ import com.neon.brokenman.GdxGame;
 import com.neon.brokenman.asset.AssetService;
 import com.neon.brokenman.asset.MapAsset;
 import com.neon.brokenman.system.RenderSystem;
+import com.neon.brokenman.tiled.TiledAshleyConfigurator;
+import com.neon.brokenman.tiled.TiledService;
+
+import java.util.function.Consumer;
 
 import static com.neon.brokenman.config.VideoConstants.UNIT_SCALE;
 
 public class GameScreen extends ScreenAdapter {
 
+    private final GdxGame game;
     private final Batch batch;
     private final AssetService assetService;
     private final Viewport viewport;
     private final OrthographicCamera camera;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final Engine engine;
+    private final TiledService tiledService;
+    private final TiledAshleyConfigurator tiledAshleyConfigurator;
 
     public GameScreen(final GdxGame game) {
+        this.game = game;
         this.assetService = game.getAssetService();
         this.viewport = game.getViewport();
         this.camera = game.getCamera();
         this.batch = game.getBatch();
-
-        // Renderer powinien dostać mapę dopiero po załadowaniu w show().
-        this.mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, this.batch);
+        this.tiledService = new TiledService(this.assetService);
         this.engine = new Engine();
+        this.tiledAshleyConfigurator = new TiledAshleyConfigurator(this.engine, this.assetService);
 
-        this.engine.addSystem(new RenderSystem(this.batch, this.viewport));
-//        this.engine.addSystem(new HealSystem(this.batch, this.viewport, this.assetService));
-//        this.engine.addSystem(new DamageSystem(this.batch, this.viewport, this.assetService));
-//        this.engine.addSystem(new MoveSystem(this.batch, this.viewport, this.assetService));
+        this.mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, this.batch);
+
+        this.engine.addSystem(new RenderSystem(this.batch, this.viewport, this.camera));
     }
 
     @Override
     public void show() {
-        this.engine.getSystem(RenderSystem.class).setMap(this.assetService.get(MapAsset.MAIN));
+        Consumer<TiledMap> renderConsumer = this.engine.getSystem(RenderSystem.class)::setMap;
+        this.tiledService.setMapChangeConsumer(renderConsumer);
+        this.tiledService.setLoadObjectConsumer(this.tiledAshleyConfigurator::onLoadObject);
+
+        TiledMap tiledMap = this.tiledService.loadMap(MapAsset.MAIN);
+        this.tiledService.setMap(tiledMap);
     }
 
     @Override
